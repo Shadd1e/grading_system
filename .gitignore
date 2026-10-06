@@ -1,0 +1,153 @@
+# =========================================================
+# ENVIRONMENT / SECRETS
+# =========================================================
+.env
+.env.*
+!.env.example
+
+# =========================================================
+# NODE / JAVASCRIPT
+# =========================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+.nuxt/
+.vite/
+out/
+
+# =========================================================
+# PYTHON
+# =========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# =========================================================
+# MACHINE LEARNING / LARGE FILES
+# =========================================================
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.h5
+*.keras
+*.joblib
+*.pkl
+
+# HuggingFace / Transformers caches
+.cache/
+huggingface/
+transformers_cache/
+models/
+checkpoints/
+
+# ML datasets
+data/
+datasets/
+*.csv
+*.parquet
+*.feather
+
+# Training outputs
+runs/
+wandb/
+tensorboard/
+outputs/
+logs/
+
+# =========================================================
+# GENERATED EXAM / RESULT FILES
+# =========================================================
+results/
+uploads/
+generated/
+generated_papers/
+generated_answer_sheets/
+temp/
+tmp/
+
+# PDFs/images generated during development
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# =========================================================
+# LOCAL DATABASE / STORAGE
+# =========================================================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================================================
+# FRONTEND
+# =========================================================
+.expo/
+.expo-shared/
+.metro/
+.cache/
+coverage/
+
+# React Native / Expo generated files
+android/.gradle/
+android/.idea/
+android/app/build/
+android/build/
+android/local.properties
+
+ios/Pods/
+ios/build/
+ios/.xcode.env.local
+
+# =========================================================
+# IDE / EDITORS
+# =========================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# =========================================================
+# OS / TEMPORARY
+# =========================================================
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*~
+
+# =========================================================
+# GIT
+# =========================================================
+*.patch

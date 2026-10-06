@@ -1,0 +1,26 @@
+# --- Web service ---
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+python-multipart>=0.0.9
+
+# --- Image processing ---
+opencv-python>=4.10.0
+numpy>=2.1.0
+Pillow>=10.4.0
+
+# --- Deep learning (MCQ CNN) ---
+torch>=2.5.0
+torchvision>=0.20.0
+
+# --- Deep learning (TrOCR short-phrase) ---
+transformers>=4.46.0
+sentencepiece>=0.2.0
+accelerate>=0.34.2
+
+# --- Grading engine (similarity scoring) ---
+rapidfuzz>=3.9.7
+
+# --- Misc ---
+pydantic>=2.9.2
+python-Levenshtein>=0.25.1
+pytest
