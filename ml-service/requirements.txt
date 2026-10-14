@@ -23,4 +23,4 @@ rapidfuzz>=3.9.7
 # --- Misc ---
 pydantic>=2.9.2
 python-Levenshtein>=0.25.1
-pytestreportlab>=4.2.0
+reportlab>=4.2.0
