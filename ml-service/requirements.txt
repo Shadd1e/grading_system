@@ -4,7 +4,7 @@ uvicorn[standard]>=0.30.6
 python-multipart>=0.0.9
 
 # --- Image processing ---
-opencv-python>=4.10.0
+opencv-python-headless>=4.10.0
 numpy>=2.1.0
 Pillow>=10.4.0
 
