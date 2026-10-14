@@ -127,3 +127,64 @@ async def recognize_script(
         )
 
     return RecognitionResponse(exam_id=exam_id, student_id=student_id, answers=answers)
+
+@app.get("/templates")
+def list_templates(x_ml_service_key: Optional[str] = Header(default=None)):
+    """Expose the static answer-sheet layouts without making ML the exam store."""
+    _authorize(x_ml_service_key)
+    result = []
+    labels = {"mixed": "Mixed", "all_mcq": "All MCQ", "all_completion": "All Completion"}
+    for template_type in TEMPLATE_TYPES:
+        template = templates.get(template_type)
+        if not template:
+            continue
+        result.append({
+            "type": template_type,
+            "label": labels.get(template_type, template_type.replace("_", " ").title()),
+            "question_count": len(template.get("questions", [])),
+            "questions": template.get("questions", []),
+            "reference_width": template.get("reference_width"),
+            "reference_height": template.get("reference_height"),
+        })
+    return result
+
+
+@app.get("/answer-sheets/{template_type}.pdf")
+def answer_sheet(template_type: str, x_ml_service_key: Optional[str] = Header(default=None)):
+    _authorize(x_ml_service_key)
+    if template_type not in TEMPLATE_TYPES:
+        raise HTTPException(status_code=404, detail="Unknown template type")
+    path = DATA_DIR / "answer_sheets" / f"{template_type}_answer_sheet.pdf"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Answer sheet not found")
+    from fastapi.responses import FileResponse
+    return FileResponse(path, media_type="application/pdf", filename=path.name)
+
+
+@app.post("/render-question-paper.pdf")
+async def render_question_paper(payload: dict, x_ml_service_key: Optional[str] = Header(default=None)):
+    """Render a question paper from supplied exam content.
+
+    The ML service renders the document but does not persist the examination.
+    """
+    _authorize(x_ml_service_key)
+    exam_content = payload.get("exam") if isinstance(payload.get("exam"), dict) else payload
+    template_type = exam_content.get("template_type") or exam_content.get("template")
+    if template_type not in templates:
+        raise HTTPException(status_code=400, detail=f"Unknown template type: {template_type}")
+
+    from app.exam_content import validate_against_template, generate_question_paper_pdf
+    try:
+        validate_against_template(exam_content, templates[template_type])
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+    output_dir = DATA_DIR / "generated_question_papers"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    exam_id = str(exam_content.get("exam_id") or exam_content.get("id") or "exam")
+    safe_id = "".join(ch if ch.isalnum() or ch in "-_" else "_" for ch in exam_id)
+    output_path = output_dir / f"{safe_id}.pdf"
+    generate_question_paper_pdf(exam_content, str(output_path))
+
+    from fastapi.responses import FileResponse
+    return FileResponse(output_path, media_type="application/pdf", filename=f"{safe_id}.pdf")

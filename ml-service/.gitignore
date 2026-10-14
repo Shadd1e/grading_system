@@ -5,3 +5,4 @@ checkpoints/
 data/emnist/
 .pytest_cache/
 *.egg-info/
+data/generated_question_papers/

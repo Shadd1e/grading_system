@@ -35,7 +35,8 @@ def validate_against_template(exam_content: dict, template: dict) -> None:
     grading time instead of at exam-creation time)."""
     template_questions = {q["id"]: q["type"] for q in template["questions"]}
     exam_questions = {
-        qid: q["type"] for qid, q in exam_content["questions"].items()
+        qid: ("phrase" if q["type"] in {"completion", "essay", "short_phrase", "phrase"} else q["type"])
+        for qid, q in exam_content["questions"].items()
     }
 
     template_ids = set(template_questions)
