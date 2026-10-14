@@ -1,0 +1,28 @@
+{
+  "_comment": "Coordinates are in pixels, relative to the DESKEWED, RESIZED reference image at reference_width x reference_height. Every scanned sheet is resized to this size before boxes are cropped, so coordinates stay valid regardless of the scanner's native resolution. box = [x, y, width, height], measured from the top-left corner.",
+
+  "reference_width": 1240,
+  "reference_height": 1754,
+
+  "alignment_markers": {
+    "_comment": "Four solid black squares printed in the corners of the answer sheet, used to detect and correct rotation/skew before cropping boxes. Draw these on your real template as filled squares roughly 25x25 px at reference resolution. Inset 100px (~17mm) from the page edge — a tighter margin risks a marker rotating off-frame if a scanned/photographed sheet is skewed by more than a couple of degrees.",
+    "top_left":     [100, 100],
+    "top_right":    [1140, 100],
+    "bottom_left":  [100, 1654],
+    "bottom_right": [1140, 1654]
+  },
+
+  "questions": [
+    { "id": "q1",  "type": "mcq",    "box": [100, 340, 80, 80] },
+    { "id": "q2",  "type": "mcq",    "box": [220, 340, 80, 80] },
+    { "id": "q3",  "type": "mcq",    "box": [340, 340, 80, 80] },
+    { "id": "q4",  "type": "mcq",    "box": [460, 340, 80, 80] },
+    { "id": "q5",  "type": "mcq",    "box": [580, 340, 80, 80] },
+
+    { "id": "q6",  "type": "phrase", "box": [100, 480, 900, 100] },
+    { "id": "q7",  "type": "phrase", "box": [100, 620, 900, 100] },
+    { "id": "q8",  "type": "phrase", "box": [100, 760, 900, 100] },
+    { "id": "q9",  "type": "phrase", "box": [100, 900, 900, 100] },
+    { "id": "q10", "type": "phrase", "box": [100, 1040, 900, 100] }
+  ]
+}

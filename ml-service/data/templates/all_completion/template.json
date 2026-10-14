@@ -1,0 +1,27 @@
+{
+  "_comment": "All-completion answer sheet: 10 short-phrase questions, stacked vertically. Boxes are slightly shorter (80px) than the mixed template's phrase boxes (100px) so all 10 fit comfortably above the bottom alignment markers.",
+
+  "reference_width": 1240,
+  "reference_height": 1754,
+
+  "alignment_markers": {
+    "_comment": "Same 100px inset as the mixed template.",
+    "top_left":     [100, 100],
+    "top_right":    [1140, 100],
+    "bottom_left":  [100, 1654],
+    "bottom_right": [1140, 1654]
+  },
+
+  "questions": [
+    { "id": "q1",  "type": "phrase", "box": [100, 300, 900, 80] },
+    { "id": "q2",  "type": "phrase", "box": [100, 410, 900, 80] },
+    { "id": "q3",  "type": "phrase", "box": [100, 520, 900, 80] },
+    { "id": "q4",  "type": "phrase", "box": [100, 630, 900, 80] },
+    { "id": "q5",  "type": "phrase", "box": [100, 740, 900, 80] },
+    { "id": "q6",  "type": "phrase", "box": [100, 850, 900, 80] },
+    { "id": "q7",  "type": "phrase", "box": [100, 960, 900, 80] },
+    { "id": "q8",  "type": "phrase", "box": [100, 1070, 900, 80] },
+    { "id": "q9",  "type": "phrase", "box": [100, 1180, 900, 80] },
+    { "id": "q10", "type": "phrase", "box": [100, 1290, 900, 80] }
+  ]
+}
